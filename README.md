@@ -101,11 +101,15 @@ GROUP BY Region;
 
 ### 3. Highest-Selling Product by Total Sales Value
 ```sql
-SELECT Product, SUM(Total_Sales) AS Total_Sales
-FROM sales
-GROUP BY Product
-ORDER BY Total_Sales DESC
-LIMIT 1;
+ SELECT TOP 1 
+    Product, 
+    SUM(Total_Sales) AS Total_Sales
+FROM 
+   [dbo].[Sales Data ]
+GROUP BY 
+    Product
+ORDER BY 
+    Total_Sales DESC;
 ```
 -Purpose: This query identifies the highest-selling product based on total sales value.
 
@@ -119,19 +123,23 @@ GROUP BY Product;
 
 ### 5.Monthly Sales Totals for the Current Year
 ```sql
-SELECT DATE_FORMAT(OrderDate, '%Y-%m') AS Month, SUM(Total_Sales) AS Monthly_Sales
-FROM sales
-WHERE YEAR(OrderDate) = YEAR(CURDATE())
-GROUP BY Month;
+SELECT FORMAT(OrderDate, 'yyyy-MM') AS Month, 
+       SUM(Total_Sales) AS Monthly_Sales
+FROM [dbo].[Sales Data ]
+WHERE YEAR(OrderDate) = YEAR(GETDATE())
+GROUP BY FORMAT(OrderDate, 'yyyy-MM')
+ORDER BY Month
 ```
 - Purpose: This query provides monthly sales totals for the current year, allowing for performance tracking over time.
 
 ### 6. Top 5 Customers by Total Purchase Amount
-``` SELECT Customer_Id, SUM(Total_Sales) AS Total_Purchase
-FROM sales
-GROUP BY Customer_Id
-ORDER BY Total_Purchase DESC
-LIMIT 5;
+```sql
+SELECT FORMAT(OrderDate, 'yyyy-MM') AS Month, 
+       SUM(Total_Sales) AS Monthly_Sales
+FROM [dbo].[Sales Data ]
+WHERE YEAR(OrderDate) = YEAR(GETDATE())
+GROUP BY FORMAT(OrderDate, 'yyyy-MM')
+ORDER BY Month;
 ```
 -Purpose: This query identifies the top 5 customers based on their total purchase amounts.
 
