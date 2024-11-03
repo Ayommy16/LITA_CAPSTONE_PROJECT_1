@@ -89,7 +89,7 @@ SELECT Product, SUM(Total_Sales) AS Total_Sales
 FROM sales
 GROUP BY Product;
 
-#### 1. Number of Sales in each Region
+This query retrieves total sales for each product, allowing you to identify top-selling items.
 
 
 
