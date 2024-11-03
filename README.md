@@ -87,7 +87,7 @@ Assuming you have a SQL table named `sales`, here are the SQL queries to extract
 ```sql
 SELECT Product, SUM(Total_Sales) AS Total_Sales
 FROM sales
-GROUP BY Product;
+GROUP BY Product```
 
 This query retrieves total sales for each product, allowing you to identify top-selling items.
 
