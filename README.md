@@ -89,8 +89,25 @@ SELECT Product, SUM(Total_Sales) AS Total_Sales
 FROM sales
 GROUP BY Product
 ```
-
 This query retrieves total sales for each product, allowing you to identify top-selling items.
+
+### 2. Number of Sales Transactions in Each Region
+```sql
+SELECT Region, COUNT(OrderID) AS Transaction_Count
+FROM sales
+GROUP BY Region;
+```
+- Purpose: This query counts the number of sales transactions per region, indicating regional activity levels.
+
+### 3. Highest-Selling Product by Total Sales Value
+```sql
+SELECT Product, SUM(Total_Sales) AS Total_Sales
+FROM sales
+GROUP BY Product
+ORDER BY Total_Sales DESC
+LIMIT 1;
+```
+
 
 
 
