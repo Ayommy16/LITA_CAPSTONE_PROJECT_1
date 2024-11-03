@@ -86,7 +86,7 @@ Assuming you have a SQL table named `sales`, here are the SQL queries to extract
 #### 1. Total Sales for Each Product Category
 ```sql
 SELECT Product, SUM(Total_Sales) AS Total_Sales
-FROM sales
+FROM SalesData
 GROUP BY Product
 ```
 This query retrieves total sales for each product, allowing you to identify top-selling items.
@@ -94,7 +94,7 @@ This query retrieves total sales for each product, allowing you to identify top-
 ### 2. Number of Sales Transactions in Each Region
 ```sql
 SELECT Region, COUNT(OrderID) AS Transaction_Count
-FROM sales
+FROM SalesData
 GROUP BY Region;
 ```
 - Purpose: This query counts the number of sales transactions per region, indicating regional activity levels.
@@ -116,7 +116,7 @@ ORDER BY
 ### 4. Total Revenue per Product
 ```sql
 SELECT Product, SUM(Total_Sales) AS Total_Revenue
-FROM sales
+FROM SalesData
 GROUP BY Product;
 ```
 -Purpose: This query calculates total revenue for each product.
@@ -147,7 +147,7 @@ ORDER BY Month;
 ```sql
 SELECT Region, SUM(Total_Sales) AS Total_Sales,
        (SUM(Total_Sales) / (SELECT SUM(Total_Sales) FROM sales) * 100) AS Percentage_Contribution
-FROM sales
+FROM SalesData
 GROUP BY Region;
 ```
 -Purpose: This query calculates the percentage of total sales each region contributes.
@@ -155,7 +155,7 @@ GROUP BY Region;
 ### 8. Products with No Sales in the Last Quarter
 ```sql
 SELECT Product
-FROM sales
+FROM SalesData
 GROUP BY Product
 HAVING SUM(CASE WHEN OrderDate >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH) THEN Total_Sales ELSE 0 END) = 0;
 ```
