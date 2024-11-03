@@ -40,7 +40,7 @@ The dataset includes the following columns:
 - All relevant data types (e.g., dates, numbers) are formatted appropriately.
 
 ### 2. Explorative Data Analysis
-    This involved exploring the data to answer some questions about the data such as ;
+    This involved exploring the data to answer some questions about the data such as:
     - What is the overall total sales by products, region, and months?
     - What is the average sales per product and total revenue by region?
 
