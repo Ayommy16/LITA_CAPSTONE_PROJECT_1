@@ -39,9 +39,10 @@ The dataset includes the following columns:
 - The dataset is organized in a table format in Excel to facilitate analysis.
 - All relevant data types (e.g., dates, numbers) are formatted appropriately.
 
-### 2. Explorative Data Analysis
-    - What is the overall total sales by products, region, and months
-    - What is the average sales per product and total revenue by region?
+### 2. Explorative Data Analysis 
+This involved the exploration of Data to answer some questions on the Data such as:
+- What is the overall total sales by products, region, and months
+- What is the average sales per product and total revenue by region?
 
 ### 3. Creating Pivot Tables
 Pivot tables were created to summarize sales data effectively. The following pivot tables were generated:
