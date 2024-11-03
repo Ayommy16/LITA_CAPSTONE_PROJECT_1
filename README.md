@@ -107,6 +107,50 @@ GROUP BY Product
 ORDER BY Total_Sales DESC
 LIMIT 1;
 ```
+-Purpose: This query identifies the highest-selling product based on total sales value.
+
+### 4. Total Revenue per Product
+```sql
+SELECT Product, SUM(Total_Sales) AS Total_Revenue
+FROM sales
+GROUP BY Product;
+```
+-Purpose: This query calculates total revenue for each product.
+
+### 5.Monthly Sales Totals for the Current Year
+```sql
+SELECT DATE_FORMAT(OrderDate, '%Y-%m') AS Month, SUM(Total_Sales) AS Monthly_Sales
+FROM sales
+WHERE YEAR(OrderDate) = YEAR(CURDATE())
+GROUP BY Month;
+```
+- Purpose: This query provides monthly sales totals for the current year, allowing for performance tracking over time.
+
+### 6. Top 5 Customers by Total Purchase Amount
+``` SELECT Customer_Id, SUM(Total_Sales) AS Total_Purchase
+FROM sales
+GROUP BY Customer_Id
+ORDER BY Total_Purchase DESC
+LIMIT 5;
+```
+-Purpose: This query identifies the top 5 customers based on their total purchase amounts.
+
+### 7. Percentage of Total Sales Contributed by Each Region
+```sql
+SELECT Region, SUM(Total_Sales) AS Total_Sales,
+       (SUM(Total_Sales) / (SELECT SUM(Total_Sales) FROM sales) * 100) AS Percentage_Contribution
+FROM sales
+GROUP BY Region;
+```
+-Purpose: This query calculates the percentage of total sales each region contributes.
+
+### 8. Products with No Sales in the Last Quarter
+```sql
+SELECT Product
+FROM sales
+GROUP BY Product
+HAVING SUM(CASE WHEN OrderDate >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH) THEN Total_Sales ELSE 0 END) = 0;
+```
 
 
 
